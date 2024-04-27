@@ -23,9 +23,14 @@ Verify installation by running tests
 pytest
 ```
 
-To deactivate, just run `deactivate` in the terminal.
+To deactivate, just run `deactivate` in the terminal. You should activate the environment when working on the project
+and deactivate when finished.
 
-You should activate the environment when working on the project and deactivate when finished.
+Activate git hooks
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ### Commands
 
