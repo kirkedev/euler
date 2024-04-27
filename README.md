@@ -32,7 +32,7 @@ You should activate the environment when working on the project and deactivate w
 Run solutions
 
 ```bash
-bin/solve
+bin/solve           # Run all solutions
 bin/solve 1         # Run the first solution
 bin/solve 1 2 3     # Run the first 3 solutions 
 ```
