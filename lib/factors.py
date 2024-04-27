@@ -1,5 +1,5 @@
 from functools import partial
-from math import ceil, sqrt, isqrt
+from math import ceil, sqrt
 from typing import Callable, Iterable
 
 
@@ -13,16 +13,15 @@ def is_divisible_by(divisor: int) -> Callable[[int], bool]:
 
 def factors(number: int) -> Iterable[int]:
     numbers = []
+    root = ceil(sqrt(number))
 
-    for factor in range(1, ceil(sqrt(number))):
+    for factor in range(1, root):
         if is_divisible(number, factor):
             yield factor
             numbers.append(number // factor)
 
-    square = isqrt(number)
-
-    if square ** 2 == number:
-        yield square
+    if root ** 2 == number:
+        yield root
 
     yield from reversed(numbers)
 
