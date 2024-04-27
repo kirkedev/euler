@@ -27,9 +27,9 @@ rows = """08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 
 grid = Grid([list(map(int, row.split())) for row in rows.split("\n")])
 
-sequences = chain(window(flatten(grid.rows()), 4),
-                  window(flatten(grid.columns()), 4),
-                  window(flatten(grid.diagonals()), 4),
-                  window(flatten(grid.antidiagonals()), 4))
+sequences = chain(flatten(window(row, 4) for row in grid.rows()),
+                  flatten(window(column, 4) for column in grid.columns()),
+                  flatten(window(diagonal, 4) for diagonal in grid.diagonals()),
+                  flatten(window(diagonal, 4) for diagonal in grid.antidiagonals()))
 
 print(max(map(prod, sequences)))
