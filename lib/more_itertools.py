@@ -30,9 +30,9 @@ def count_letters(string: str) -> int:
     return sum(1 for char in string if char.isalpha())
 
 
-def drop(iterable: Iterable[T], count: int) -> Iterator[T]:
+def drop(count: int, iterable: Iterable[T]) -> Iterator[T]:
     return islice(iterable, count, count + 1)
 
 
-def take(iterable: Iterable[T], count: int) -> Iterator[T]:
+def take(count: int, iterable: Iterable[T]) -> Iterator[T]:
     return islice(iterable, count)
