@@ -22,7 +22,7 @@ def is_palindromic_number(number: int) -> bool:
     return is_palindrome(str(number))
 
 
-def squares(numbers: Iterable[int]) -> Iterable[int]:
+def squared(numbers: Iterable[int]) -> Iterable[int]:
     return (number ** 2 for number in numbers)
 
 

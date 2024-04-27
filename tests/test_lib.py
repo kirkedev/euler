@@ -1,4 +1,4 @@
-from lib import is_palindrome, is_palindromic_number, squares, count_edges, products
+from lib import is_palindrome, is_palindromic_number, squared, count_edges, products
 
 
 def test_is_palindrome():
@@ -18,7 +18,7 @@ def test_is_palindromic_number():
 
 
 def test_sum_of_squares():
-    assert sum(squares(range(1, 11))) == 385
+    assert sum(squared(range(1, 11))) == 385
 
 
 def test_count_edges():
