@@ -1,4 +1,4 @@
-from lib import is_palindrome, is_palindromic_number, squared, count_edges, products
+from lib import is_palindrome, is_palindromic_number, count_edges, products, squared
 
 
 def test_is_palindrome():
