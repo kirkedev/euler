@@ -39,5 +39,5 @@ def collatz_sequence(number: int) -> Iterable[int]:
     yield number
 
     while number > 1:
-        number = number / 2 if is_divisible(number, 2) else 3 * number + 1
+        number = number // 2 if is_divisible(number, 2) else 3 * number + 1
         yield number

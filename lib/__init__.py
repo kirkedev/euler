@@ -2,13 +2,15 @@ import re
 from functools import lru_cache
 from itertools import combinations
 from math import prod
-from typing import Callable, Iterable, TypeVar, Tuple
+from typing import Callable, Iterable, TypeVar, Tuple, TypeAlias
 
 from lib.factors import is_divisible
 
 T = TypeVar("T")
-Coordinates = Direction = Dimensions = Tuple[int, int]
 Predicate = Callable[[T], bool]
+Coordinates: TypeAlias = Tuple[int, int]
+Direction: TypeAlias = Tuple[int, int]
+Dimensions: TypeAlias = Tuple[int, int]
 
 
 def is_palindrome(string: str) -> bool:
