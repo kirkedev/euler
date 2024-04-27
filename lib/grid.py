@@ -1,9 +1,7 @@
 from itertools import takewhile
-from typing import Iterable, List, Generic, TypeVar
+from typing import Iterable, List, Generic
 
-from lib import Coordinates, Direction, Dimensions
-
-T = TypeVar("T")
+from lib import Coordinates, Direction, Dimensions, T
 
 
 def vector(start: Coordinates, direction: Direction) -> Iterable[Coordinates]:

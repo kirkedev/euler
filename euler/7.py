@@ -1,5 +1,4 @@
-from itertools import islice
+from lib.more_itertools import drop
+from lib.sequences import primes
 
-from lib import primes
-
-print(next(islice(primes(), 10000, 10001)))
+print(next(drop(primes(), 10000)))
