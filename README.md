@@ -10,7 +10,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Verify the environment is activated by running `which python` and install dependencies:
+Verify the environment is activated and install dependencies
 
 ```bash
 which python
@@ -23,8 +23,8 @@ Verify installation by running tests
 pytest
 ```
 
-To deactivate, just run `deactivate` in the terminal. You should activate the environment when working on the project
-and deactivate when finished.
+To deactivate the environment, just run `deactivate` in the terminal. You should activate the environment when working
+on the project and deactivate when finished.
 
 Activate git hooks
 
