@@ -10,8 +10,8 @@ from typing import List
 def get_all_problems() -> List[str]:
     pattern = re.compile(r"(\d+)\.py")
 
-    problems = (match[1] for filename in listdir(path.dirname(path.realpath(__file__))) if
-                (match := pattern.match(filename)))
+    problems = (match[1] for filename in listdir(path.dirname(path.realpath(__file__)))
+                if (match := pattern.match(filename)))
 
     return sorted(problems, key=int)
 
