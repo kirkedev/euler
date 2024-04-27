@@ -2,7 +2,7 @@ import re
 from functools import lru_cache
 from itertools import combinations
 from math import prod
-from typing import Callable, Iterable, TypeVar, Tuple, TypeAlias
+from typing import Callable, Iterable, TypeVar, Tuple, TypeAlias, List
 
 from lib.factors import is_divisible
 
@@ -33,3 +33,14 @@ def count_edges(row: int, column: int) -> int:
 
 def products(numbers: Iterable[int]) -> Iterable[int]:
     return map(prod, combinations(numbers, 2))
+
+
+def add_items(*iterables: Iterable[int]) -> Iterable[int]:
+    return map(sum, zip(*iterables))
+
+
+def step_triangle(total: List[int], row: List[int]) -> List[int]:
+    lefts = add_items(row, total[:-1])
+    rights = add_items(row, total[1:])
+
+    return [max(left, right) for left, right in zip(lefts, rights)]
