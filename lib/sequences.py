@@ -2,7 +2,7 @@ from collections import defaultdict
 from itertools import count, combinations
 from typing import Iterable
 
-from lib import is_divisible
+from lib.factors import is_divisible
 
 
 def fibonacci() -> Iterable[int]:

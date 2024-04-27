@@ -5,6 +5,14 @@ from typing import Iterable, Iterator
 from lib import T, Predicate
 
 
+def drop(count: int, iterable: Iterable[T]) -> Iterator[T]:
+    return islice(iterable, count, count + 1)
+
+
+def take(count: int, iterable: Iterable[T]) -> Iterator[T]:
+    return islice(iterable, count)
+
+
 def window(iterable: Iterable[T], size: int) -> Iterable[Iterable[T]]:
     iterator = iter(iterable)
     result = deque(islice(iterator, size - 1), maxlen=size)
@@ -30,9 +38,9 @@ def count_letters(string: str) -> int:
     return sum(1 for char in string if char.isalpha())
 
 
-def drop(count: int, iterable: Iterable[T]) -> Iterator[T]:
-    return islice(iterable, count, count + 1)
+def add_items(*iterables: Iterable[int]) -> Iterable[int]:
+    return map(sum, zip(*iterables))
 
 
-def take(count: int, iterable: Iterable[T]) -> Iterator[T]:
-    return islice(iterable, count)
+def max_items(*iterables: Iterable[int]) -> Iterable[int]:
+    return map(max, zip(*iterables))

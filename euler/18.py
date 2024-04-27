@@ -1,6 +1,6 @@
 from functools import reduce
 
-from lib import step_triangle
+from lib.algorithms import max_step
 
 input = """75
 95 64
@@ -20,4 +20,4 @@ input = """75
 
 triangle = [list(map(int, row.split())) for row in input.split("\n")]
 
-print(reduce(step_triangle, triangle[::-1])[0])
+print(reduce(max_step, triangle[::-1])[0])
