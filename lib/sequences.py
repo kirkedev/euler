@@ -1,4 +1,5 @@
 from collections import defaultdict
+from datetime import date
 from itertools import count, combinations
 from typing import Iterable
 
@@ -41,3 +42,19 @@ def collatz_sequence(number: int) -> Iterable[int]:
     while number > 1:
         number = number // 2 if is_divisible(number, 2) else 3 * number + 1
         yield number
+
+
+def dates(year: int) -> Iterable[date]:
+    for year in count(year):
+        for month in range(1, 13):
+            end = 1
+
+            if month in (4, 6, 9, 11):
+                end += 30
+            elif month == 2:
+                end += 29 if is_divisible(year, 4) and not is_divisible(year, 100) else 28
+            else:
+                end += 31
+
+            for day in range(1, end):
+                yield date(year, month, day)

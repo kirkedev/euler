@@ -1,6 +1,8 @@
+from itertools import takewhile
+
 from lib.factors import is_prime, factors
 from lib.more_itertools import take, count_items
-from lib.sequences import primes, triangular_numbers, collatz_sequence, fibonacci
+from lib.sequences import primes, triangular_numbers, collatz_sequence, fibonacci, dates
 
 
 def test_primes():
@@ -19,3 +21,8 @@ def test_collatz_sequence():
 
 def test_fibonacci():
     assert list(take(5, fibonacci())) == [1, 2, 3, 5, 8]
+
+
+def test_dates():
+    assert count_items(takewhile(lambda date: date.year < 1997, dates(1996))) == 366
+    assert count_items(takewhile(lambda date: date.year < 2001, dates(2000))) == 365
