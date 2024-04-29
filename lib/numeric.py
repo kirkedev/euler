@@ -15,3 +15,7 @@ def squared(numbers: Iterable[int]) -> Iterable[int]:
 
 def products(numbers: Iterable[int]) -> Iterable[int]:
     return map(prod, combinations(numbers, 2))
+
+
+def digits(number: int) -> Iterable[int]:
+    return map(int, str(number))
