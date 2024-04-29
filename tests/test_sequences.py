@@ -2,7 +2,7 @@ from itertools import takewhile
 
 from lib.factors import is_prime, factors
 from lib.more_itertools import take, count_items
-from lib.sequences import primes, triangular_numbers, collatz_sequence, fibonacci, dates
+from lib.sequences import primes, triangular_numbers, collatz_sequence, fibonacci, dates, amicable_pairs
 
 
 def test_primes():
@@ -26,3 +26,7 @@ def test_fibonacci():
 def test_dates():
     assert count_items(takewhile(lambda date: date.year < 1997, dates(1996))) == 366
     assert count_items(takewhile(lambda date: date.year < 2001, dates(2000))) == 365
+
+
+def test_amicable_pairs():
+    assert next(iter(amicable_pairs(10000))) == (220, 284)

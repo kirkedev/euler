@@ -1,4 +1,4 @@
-from lib.factors import is_divisible_by, is_prime, factors, prime_factors
+from lib.factors import is_divisible_by, is_prime, factors, prime_factors, proper_divisors
 
 
 def test_is_multiple():
@@ -45,3 +45,11 @@ def test_factors():
 
 def test_prime_factors():
     assert list(prime_factors(13195)) == [5, 7, 13, 29]
+
+
+def test_proper_divisors():
+    assert list(proper_divisors(220)) == [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110]
+    assert list(proper_divisors(284)) == [1, 2, 4, 71, 142]
+
+    assert sum(proper_divisors(220)) == 284
+    assert sum(proper_divisors(284)) == 220

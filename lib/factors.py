@@ -1,4 +1,5 @@
 from functools import partial
+from itertools import takewhile
 from math import ceil, sqrt
 from typing import Callable, Iterable
 
@@ -32,3 +33,7 @@ def is_prime(number: int) -> bool:
 
 def prime_factors(number: int) -> Iterable[int]:
     return filter(is_prime, factors(number))
+
+
+def proper_divisors(number: int) -> Iterable[int]:
+    return takewhile(lambda n: n < number, factors(number))

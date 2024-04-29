@@ -1,9 +1,9 @@
 from collections import defaultdict
 from datetime import date
 from itertools import count, combinations
-from typing import Iterable
+from typing import Iterable, Tuple
 
-from lib.factors import is_divisible
+from lib.factors import is_divisible, proper_divisors
 
 
 def fibonacci() -> Iterable[int]:
@@ -58,3 +58,17 @@ def dates(year: int) -> Iterable[date]:
 
             for day in range(1, end):
                 yield date(year, month, day)
+
+
+def amicable_pairs(stop: int) -> Iterable[Tuple[int, int]]:
+    paired = []
+
+    for number in range(1, stop):
+        if number in paired:
+            continue
+
+        other = sum(proper_divisors(number))
+
+        if number != other and sum(proper_divisors(other)) == number:
+            paired.append(other)
+            yield number, other
