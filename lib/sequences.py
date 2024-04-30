@@ -12,6 +12,8 @@ def fibonacci() -> Iterable[int]:
     last = 0
     result = 1
 
+    yield 1
+
     while True:
         last, result = result, last + result
         yield result

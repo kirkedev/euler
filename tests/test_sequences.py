@@ -20,7 +20,7 @@ def test_collatz_sequence():
 
 
 def test_fibonacci():
-    assert list(take(5, fibonacci())) == [1, 2, 3, 5, 8]
+    assert list(take(5, fibonacci())) == [1, 1, 2, 3, 5]
 
 
 def test_dates():
