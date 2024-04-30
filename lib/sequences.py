@@ -28,7 +28,7 @@ def primes():
                 marked[number + multiple].append(multiple)
         else:
             yield number
-            marked[number * number].append(number)
+            marked[number ** 2].append(number)
 
 
 def triplets(stop: int):
@@ -49,19 +49,18 @@ def collatz_sequence(number: int) -> Iterable[int]:
 
 
 def dates(year: int) -> Iterable[date]:
-    for year in count(year):
-        for month in range(1, 13):
-            end = 1
+    for month in range(1, 13):
+        end = 1
 
-            if month in (4, 6, 9, 11):
-                end += 30
-            elif month == 2:
-                end += 29 if is_divisible(year, 4) and not is_divisible(year, 100) else 28
-            else:
-                end += 31
+        if month in (4, 6, 9, 11):
+            end += 30
+        elif month == 2:
+            end += 29 if is_divisible(year, 4) and not is_divisible(year, 100) else 28
+        else:
+            end += 31
 
-            for day in range(1, end):
-                yield date(year, month, day)
+        for day in range(1, end):
+            yield date(year, month, day)
 
 
 def amicable_pairs(stop: int) -> Iterable[Tuple[int, int]]:
@@ -78,9 +77,12 @@ def amicable_pairs(stop: int) -> Iterable[Tuple[int, int]]:
             yield number, other
 
 
-def non_abundant_sums() -> Iterable[int]:
-    abundant_numbers = (number for number in range(1, 28124) if sum(proper_divisors(number)) > number)
-    numbers = sorted(set(number for number in starmap(add, product(*tee(abundant_numbers))) if number < 28124))
+def abundant_numbers() -> Iterable[int]:
+    return (number for number in range(1, 28124) if sum(proper_divisors(number)) > number)
 
-    for first, last in window(chain([0], numbers, [28124]), 2):
-        yield from range(first + 1, last)
+
+def non_abundant_sums() -> Iterable[int]:
+    sums = sorted(set(number for number in starmap(add, product(*tee(abundant_numbers()))) if number < 28124))
+
+    for start, end in window(chain([0], sums, [28124]), 2):
+        yield from range(start + 1, end)
