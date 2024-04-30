@@ -1,5 +1,5 @@
 from collections import deque
-from itertools import islice, chain
+from itertools import islice, chain, takewhile, dropwhile
 from typing import Iterable, Iterator
 
 from lib import T, Predicate
@@ -11,6 +11,14 @@ def drop(count: int, iterable: Iterable[T]) -> Iterator[T]:
 
 def take(count: int, iterable: Iterable[T]) -> Iterator[T]:
     return islice(iterable, count)
+
+
+def takeuntil(predicate: Predicate[T], iterable: Iterable[T]) -> Iterable[T]:
+    return takewhile(lambda item: not predicate(item), iterable)
+
+
+def dropuntil(predicate: Predicate[T], iterable: Iterable[T]) -> Iterator[T]:
+    return dropwhile(lambda item: not predicate(item), iterable)
 
 
 def window(iterable: Iterable[T], size: int) -> Iterable[Iterable[T]]:

@@ -1,9 +1,11 @@
+from _operator import add
 from collections import defaultdict
 from datetime import date
-from itertools import count, combinations
+from itertools import count, combinations, starmap, product, tee, chain
 from typing import Iterable, Tuple
 
 from lib.factors import is_divisible, proper_divisors
+from lib.more_itertools import window
 
 
 def fibonacci() -> Iterable[int]:
@@ -72,3 +74,11 @@ def amicable_pairs(stop: int) -> Iterable[Tuple[int, int]]:
         if number != other and sum(proper_divisors(other)) == number:
             paired.append(other)
             yield number, other
+
+
+def non_abundant_sums() -> Iterable[int]:
+    abundant_numbers = (number for number in range(1, 28124) if sum(proper_divisors(number)) > number)
+    numbers = sorted(set(number for number in starmap(add, product(*tee(abundant_numbers))) if number < 28124))
+
+    for first, last in window(chain([0], numbers, [28124]), 2):
+        yield from range(first + 1, last)

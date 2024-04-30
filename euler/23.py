@@ -1,1 +1,3 @@
-numbers = range(1, 28124)
+from lib.sequences import non_abundant_sums
+
+print(sum(non_abundant_sums()))
